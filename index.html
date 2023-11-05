@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <title>レシート印刷</title>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.js"></script>
+  <script src="recipt_print.js"></script>
+  <style>
+    body{
+      background-color: lightskyblue;
+    }
+    .main {
+      display: flex;
+    }
+    .left{
+      width: 600px;
+    }
+    .right{
+      width: calc(100% - 600px);
+    }
+
+    .recipt{
+      width: 576px;
+      background-color: #FFFFFF;
+      font-size: x-large;
+    }
+    .border{
+      padding: 5px 10px 0px 10px;
+    }
+    .item{
+      width: 65%;
+    }
+    .price{
+      width: 35%;
+      text-align: right;
+    }
+    .list{
+      display: flex;
+    }
+
+    button {
+      padding: 1em 2em;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>レシート印刷 for Phomemo M02S</h1>
+  <div class="main">
+    <div class="left">
+      <!-- ここからレシート -->
+      <div id="src" class="recipt">
+        <div class="border">
+          <p style="text-align: center;">
+            <img src="logo.png" alt="ロゴ" />
+          </p>
+          <p style="text-align: center;">
+            TEL (03)-9999-9999
+          </p>
+          <p>
+            <h2 style="text-align: center;">領収証</h2>
+          </p>
+          <p>
+            2023年12月15日(金) 14:23 注文番号 12345678
+          </p>
+          <p>
+            <div class="list">
+              <div class="item">いちご</div>
+              <div class="price">1点  ¥ 300</div>
+            </div>
+            <div class="list">
+              <div class="item">ぶどう</div>
+              <div class="price">1点  ¥ 500</div>
+            </div>
+            <div class="list">
+              <div class="item">メロン</div>
+              <div class="price">1点  ¥ 2,500</div>
+            </div>
+          </p>
+          <hr>
+          <p>
+            <div class="list">
+              <div class="item">小計</div>
+              <div class="price">¥ 3,300</div>
+            </div>
+            <div class="list">
+              <div class="item">消費税等</div>
+              <div class="price">¥ 330</div>
+            </div>
+            <div class="list">
+              <div class="item" style="font-size: xx-large;">合計</div>
+              <div class="price" style="font-size: xx-large;">¥ 3,630</div>
+            </div>
+          </p>
+          <hr>
+          <p style="text-align: center;">
+            <span style="font-size: medium;">注文詳細は以下のQRコードから</span><br/>
+            <img src="qrcode.png" alt="QRコード" />
+          </p>
+          <hr style="border-top: 2px dashed; border-right: none; border-bottom: none; border-left: none;">
+        </div>
+      </div>
+      <!-- ここまでレシート -->    
+    </div>
+    <div class="right">
+      <p>
+        <button onclick="clickPrint();">印刷</button>
+      </p>
+      <div id="print_src"></div>
+    </div>
+  </div>
+</body>
+
+</html>
