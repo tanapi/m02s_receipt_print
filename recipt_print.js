@@ -1,6 +1,6 @@
 function clickPrint() {
   let src = document.querySelector("#src");
-  html2canvas(document.querySelector("#src"), {
+  html2canvas(src, {
     width: src.width,
     height: src.height,
     scale: 1
